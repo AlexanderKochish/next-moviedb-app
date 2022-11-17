@@ -8,7 +8,7 @@
     @apply bg-black
   }
   header {
-    @apply fixed top-0 z-50 justify-between left-0 w-full px-4 h-12 md:h-16 flex items-center text-white
+    @apply fixed top-0 z-20 justify-between left-0 w-full px-4 h-12 md:h-16 flex items-center text-white
   }
 }
 html,

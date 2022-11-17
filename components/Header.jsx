@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import Ava from '../public/my_avatar.jpg'
 
@@ -29,8 +30,8 @@ const Header = () => {
         </div>
         <div className='flex items-center space-x-3'>
             <Image src={Ava} className='object-contain w-10 h-10 rounded-[50%]'  alt="avatar" />
-            <button className='py-1 px-2 lg:py-2 lg:px-4 rounded-xl bg-rose-700'>Sign In</button>
-            <button className='py-1 px-2 lg:py-2 lg:px-4 rounded-xl bg-gray-500'>Sign Un</button>  
+            <Link href={'/sign_in'}><button className='py-1 px-2 lg:py-2 lg:px-4 rounded-xl bg-rose-700'>Sign In</button></Link>
+            <Link href={'/sign_up'}><button className='py-1 px-2 lg:py-2 lg:px-4 rounded-xl bg-gray-500'>Sign Up</button></Link> 
         </div>  
     </header>
   )

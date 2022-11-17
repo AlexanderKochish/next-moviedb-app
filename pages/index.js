@@ -3,9 +3,19 @@ import Banner from '../components/Banner'
 import Header from '../components/Header'
 import MovieRow from '../components/MovieRow'
 import requests from '../requests'
+import { useEffect, useState } from "react"
+import Modal from '../components/Modal'
+import ModalMovRow from '../components/ModalMovRow'
 
 export default function Home({trending,discover,topRated,popular}) {
-  
+  const[movId,setMovieId] = useState(0)
+  const[movie,setMovie] = useState(null)
+  const[open,setOpen] = useState(false)
+  const[openCardMovie,setOpenCardMovie] = useState(false)
+
+    useEffect(()=>{
+        setMovie(trending[Math.floor(Math.random() * trending.length)])
+    },[trending])
   return (
     <div className='relative w-full h-screen top-0 left-0 bottom-0 lg:min-h-[140vh] bg-gradient-to-b from-black/10 to-black'>
       <Head>
@@ -15,15 +25,16 @@ export default function Home({trending,discover,topRated,popular}) {
       </Head>
       <Header/>
       <main className='w-full min-h-screen'>
-        <Banner trending={trending}/>
+        <Banner movie={movie} setOpen={setOpen} open={open}/>
         <section className='-mt-28 pl-8'>
-          <MovieRow title='Trending Movies' movie={trending}/> 
-          <MovieRow title='Discover Movies' movie={discover}/>
-          <MovieRow title='Top Rated' movie={topRated}/>
-          <MovieRow title='Popular Movies' movie={popular}/>
+          <MovieRow title='Trending Movies' movie={trending} setOpen={setOpenCardMovie} open={openCardMovie} setMovieId={setMovieId} movId={movId}/> 
+          <MovieRow title='Discover Movies' movie={discover} setOpen={setOpenCardMovie} open={openCardMovie} setMovieId={setMovieId} movId={movId}/>
+          <MovieRow title='Top Rated' movie={topRated} setOpen={setOpenCardMovie} open={openCardMovie} setMovieId={setMovieId} movId={movId}/>
+          <MovieRow title='Popular Movies' movie={popular} setOpen={setOpenCardMovie} open={openCardMovie} setMovieId={setMovieId} movId={movId}/>
         </section>
       </main>
-      {/* <Modal/>  */}
+      { open? <Modal setOpen={setOpen} open={open} movie={movie}/>:''}
+      { openCardMovie? <ModalMovRow setOpen={setOpenCardMovie} open={openCardMovie} movId={movId}/>:''}
     </div>
   )
 }
