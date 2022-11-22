@@ -2,38 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 
 @layer base {
   body {
-    @apply bg-black
+    @apply bg-black scrollbar scrollbar-thumb-slate-900 scrollbar-track-gray-600
   }
   header {
-    @apply fixed top-0 z-20 justify-between left-0 w-full px-4 h-12 md:h-16 flex items-center text-white
+    @apply fixed top-0 z-50 justify-between left-0 w-full px-4 h-12 md:h-16 flex items-center text-white
   }
 }
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
 
-* {
-  box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
-}

@@ -1,13 +1,34 @@
 import Image from "next/image"
 import Link from "next/link"
 import SignInBgImage from '../public/bg-signIn.png'
+import { auth } from "../firebase"
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useRouter } from 'next/router'
 
 const signIn = () => {
+  const router = useRouter()
+
+  const handleSubmit = async(e)=>{
+    e.preventDefault()
+    const email = e.target[0].value
+    const password = e.target[1].value
+    const res = await signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    const user = userCredential.user;
+    router.push('/')
+    console.log(res,user)
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+  }
+  
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center text-white">
       <div className="relative top-0 left-0 w-full h-full z-10 flex justify-center items-center">
         <Image src={SignInBgImage} fill className="object-cover" alt="poster-signin"/>
-        <form className="flex flex-col absolute z-20 justify-between bg-black opacity-90 p-4 rounded-xl w-80 min-h-[320px]">
+        <form onSubmit={handleSubmit} className="flex flex-col absolute z-20 justify-between bg-black opacity-90 p-4 rounded-xl w-80 min-h-[320px]">
           <label className="inline-block text-2xl my-1">Sign In</label>
           <input type='email' placeholder="Your Email" className=" rounded-xl my-1 py-4 px-2 border-gray-300 text-white bg-inherit"/>
           <input type='password' placeholder='Your Password' className=" rounded-xl my-1 py-4 px-2  border-gray-300 text-white bg-inherit"/>

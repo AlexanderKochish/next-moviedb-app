@@ -1,5 +1,7 @@
 import Image from "next/image"
 import { img_origin } from "../requests"
+import { MdInfoOutline } from 'react-icons/md'
+import { FaPlay } from 'react-icons/fa'
 
 const Banner = ({movie,setOpen,open}) => {
     
@@ -13,8 +15,12 @@ const Banner = ({movie,setOpen,open}) => {
             <h2 className="text-4xl font-semibold text-shadow-lg md:text-6xl">{movie?.title || movie?.original_title || movie?.name}</h2>
             <p className="text-1xl text-shadow-lg md:text-2xl">{movie?.overview}</p>
             <div className="space-x-2">
-                <button onClick={()=>setOpen(!open)} className="bg-rose-700 py-2 px-6 rounded-xl">Play</button>
-                <button className="bg-gray-500 py-2 px-6 rounded-xl">More info</button>
+                <button onClick={()=>setOpen(!open)} className="bg-rose-700 py-2 px-6 inline-flex items-center rounded-xl">
+                    <FaPlay className="mr-2"/>Play
+                </button>
+                <button className="bg-gray-500 py-2 px-6 inline-flex items-center rounded-xl">
+                    <MdInfoOutline className="mr-2"/>
+                    More info</button>
             </div>
         </div>
     </div>

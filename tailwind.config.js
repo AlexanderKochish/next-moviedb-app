@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily:{
+      logo:['Satisfy', 'cursive'],
+      roboto:['Roboto','ui-sans-serif']
+    }
   },
   plugins: [
     require('tailwindcss-textshadow'),

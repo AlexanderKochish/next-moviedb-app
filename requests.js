@@ -1,5 +1,6 @@
 export const BASE_URL = 'https://api.themoviedb.org/3/';
 export const img_500 = 'https://image.tmdb.org/t/p/w500';
+export const img_300 = 'https://image.tmdb.org/t/p/w300';
 export const img_origin = 'https://image.tmdb.org/t/p/original';
 export const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
