@@ -27,18 +27,18 @@ const Header = () => {
     <header className={isScroll? 'bg-black':'bg-none'}>
         <div className='flex space-x-4 items-center'>
             <h1 className='text-2xl text-shadow-lg md:text-3xl'>Movie Next</h1>
-            <ul className='hidden space-x-10 lg:flex items-center'>
+            {/* <ul className='hidden space-x-10 lg:flex items-center'>
                 <li><ImHome className='w-6 h-6'/></li>
                 <li><MdMovie className='w-6 h-6'/></li>
                 <li><RiSlideshow3Fill className='w-6 h-6'/></li>
                 <li><FaBurn className='w-6 h-6'/></li>
                 <li><MdFavoriteBorder className='w-6 h-6'/></li>
-            </ul>
+            </ul> */}
         </div>
         <div className='flex items-center space-x-3'>      
-           {currentUser != null?
+           {currentUser?
            <div className='flex justify-between space-x-4'>
-                <Image src={currentUser.photoURL || userIcon} decoding='async' className='object-cover w-10 h-10 rounded-[50%]' width={40} height={40}  alt="avatar" />
+                <Image src={currentUser.photoURL || userIcon}  className='object-cover rounded-[50%]' width={40} height={40}  alt="avatar" />
                 <button onClick={()=>signOut(auth)} className='py-1 px-2 lg:py-2  lg:px-3 inline-flex items-center rounded-xl bg-gray-500'><MdLogout className='mr-2'/>Logout</button>
             </div>
            :<>

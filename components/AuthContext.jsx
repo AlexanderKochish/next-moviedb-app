@@ -9,8 +9,7 @@ const AuthContextProvider = ({children}) => {
 
     useEffect(()=>{
         const unMount = onAuthStateChanged(auth,(user)=>{
-            setCurrentUser(user)
-            console.log(user)
+             setCurrentUser(user)
             return ()=>{
                 unMount()
             }

@@ -3,18 +3,25 @@ import Banner from '../components/Banner'
 import Header from '../components/Header'
 import MovieRow from '../components/MovieRow'
 import requests from '../requests'
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Modal from '../components/Modal'
+import { AuthContext } from '../components/AuthContext'
+import { useRouter } from 'next/router'
 
 export default function Home({trending,discover,topRated,popular}) {
   const[movId,setMovieId] = useState(0)
   const[movie,setMovie] = useState(null)
   const[open,setOpen] = useState(false)
+  const { currentUser } = useContext(AuthContext)
+  const router = useRouter()
 
-    useEffect(()=>{
-        setMovie(trending[Math.floor(Math.random() * trending.length)])
-    },[trending])
-  return (
+  useEffect(()=>{
+    setMovie(trending[Math.floor(Math.random() * trending.length)])
+  },[trending])
+
+    console.log(router)
+  return<>
+   {!currentUser? setTimeout(()=>router.replace('/sign_in'),2000):
     <div className={`relative w-full h-screen top-0 left-0 lg:min-h-[140vh] bg-gradient-to-b scrollbar from-black/10 to-black ${open && '!h-screen overflow-hidden'}`}>
       <Head>
         <title>Movie App</title>
@@ -33,7 +40,8 @@ export default function Home({trending,discover,topRated,popular}) {
       </main>
       { open? <Modal setOpen={setOpen} open={open} movie={movie}/>:''}
     </div>
-  )
+  }
+  </>
 }
 
 export const getServerSideProps = async () => {
