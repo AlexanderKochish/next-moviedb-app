@@ -4,7 +4,7 @@ import Image from "next/image"
 
 export const getServerSideProps = async(context)=>{
     const name = context.query.title
-    const data = await fetch(`${BASE_URL}search/movie?api_key=${API_KEY}&query=${name}&page=${page}`)
+    const data = await fetch(`${BASE_URL}search/movie?api_key=${API_KEY}&query=${name}`)
     const search = await data.json()
 
     return {
