@@ -5,7 +5,7 @@ import { FaPlay } from 'react-icons/fa'
 import { useState } from "react"
 
 const Banner = ({movie,setOpen,open}) => {
-    const[info,setInfo] = useState(false)
+    const[info,setInfo] = useState(true)
     
     return (
     <div className="w-full min-h-screen flex flex-col justify-center ">

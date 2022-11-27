@@ -5,7 +5,7 @@ import { FaSearch } from 'react-icons/fa'
 const SearchMovie = () => {
     const[name,setName] = useState('')
     function handleSubmit(e) {
-        setName(e.target.value)
+        setName(e.target.value).toLowerCase().trim()
     }
   return (
     <>
