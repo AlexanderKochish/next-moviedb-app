@@ -28,7 +28,7 @@ const signIn = () => {
       <div className="w-full h-screen flex flex-col justify-center items-center text-white">
         <div className="relative top-0 left-0 w-full h-full z-10 flex justify-center items-center">
           <Image src={SignInBgImage} fill className="object-cover" alt="poster-signin"/>
-          <form onSubmit={handleSubmit} className="flex flex-col absolute z-20 justify-between bg-black opacity-90 p-4 rounded-xl w-80 min-h-[320px]">
+          <form onSubmit={handleSubmit} className="flex flex-col absolute z-20 m-2 justify-between bg-black opacity-90 p-4 rounded-xl w-80 min-h-[320px]">
             <label className="inline-block text-2xl my-1">Sign In</label>
             <input type='email' placeholder="Your Email" className="rounded-lg my-1 py-3 px-2 outline-none text-slate-900 bg-white"/>
             <input type='password' placeholder='Your Password' className="rounded-lg my-1 py-3 px-2 outline-none text-slate-900 bg-white"/>

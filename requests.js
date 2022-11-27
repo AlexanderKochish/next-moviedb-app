@@ -8,7 +8,8 @@ const requests = {
     trending:`${BASE_URL}trending/all/day?api_key=${API_KEY}`,
     discover:`${BASE_URL}discover/movie?api_key=${API_KEY}`,
     topRated:`${BASE_URL}movie/top_rated?api_key=${API_KEY}&language=en-US`,
-    popular:`${BASE_URL}movie/popular?api_key=${API_KEY}&language=en-US`
+    popular:`${BASE_URL}movie/popular?api_key=${API_KEY}&language=en-US`,
+    // search:`${BASE_URL}search/movie?api_key=${API_KEY}&query=`
 }
 
 export default requests

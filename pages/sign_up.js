@@ -63,10 +63,10 @@ const signUp = () => {
         } 
       }
   return (
-    <div className="w-full h-screen flex flex-col justify-center items-center text-white">
-      <div className="relative top-0 left-0 w-full h-full z-10 flex justify-center items-center">
+    <div className="w-full min-h-screen flex flex-col justify-center items-center text-white">
+      <div className="relative top-0 left-0 w-full min-h-screen z-10 flex justify-center items-center">
         <Image src={SignInBgImage} fill className="object-cover" alt="poster-signup"/>
-        <form onSubmit={handleSubmit} className="flex flex-col absolute z-20 justify-between bg-black/90 p-4 rounded-xl w-80 min-h-[400px]">
+        <form onSubmit={handleSubmit} className="flex flex-col absolute z-20 justify-between bg-black/90 p-4 m-2 rounded-xl w-80 min-h-[400px]">
           <label className="inline-block text-2xl my-1">Sign Up</label>
           <input type='text' placeholder='Your Name' className="rounded-lg my-1 py-3 px-2 outline-none text-slate-900 bg-white"/>
           <input type='email' placeholder="Your Email" className=" rounded-lg my-1 py-3 px-2 outline-none text-slate-900 bg-white"/>

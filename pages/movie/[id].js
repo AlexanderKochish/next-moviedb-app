@@ -65,28 +65,28 @@ const Movie = ({movie,video,credits}) => {
     <div className="text-white relative top-0 left-0 w-full h-screen lg:min-h-screen bg-gradient-to-b from-black/50 to-black">
         <div className="w-full h-screen absolute top-0 left-0 -z-10 ">
             <Image src={`${img_origin}${backdrop_path || poster_path}`} alt='poster' fill className="object-cover"/>
-        </div>
-            <Link href={'/'}>
-                <div className="absolute flex items-center animate-pulse hover:bg-rose-700 duration-300 top-5 bg-slate-900 w-16 h-14 rounded-r-xl">
-                    <ImHome className="absolute m-4 w-8 h-8"/>
-                </div>
-            </Link>
+        </div> 
         <div className="container mx-auto">
-            <div className="flex flex-col md:flex-row justify-center p-6 w-full min-h-screen">
+            <div className="flex flex-col md:flex-row justify-center p-6 w-full min-h-screen mb-12">
             <div className="w-60 h-80 md:w-96 md:h-[500px] m-4">
                 <div className="relative w-full h-full top-0 left-0">
                     <Image src={`${img_500}${poster_path || backdrop_path}`} fill className="object-cover rounded-xl shadow-lg shadow-black"/>
                 </div>
             </div>
                 <div className="flex w-3/4 md:w-2/3 lg:w-1/2 flex-col m-4 space-y-5">
-                    <h2 className="text-2xl lg:text-4xl font-semibold text-shadow-lg">{`${original_title || poster_path}`}</h2>
+                    <h2 className="text-2xl lg:text-4xl font-semibold text-shadow-lg">{`${original_title || title}`}</h2>
                     <p className="inline-flex items-center space-x-3"><MdStar className="text-yellow-500"/> <span className="shadow-md">{popularity}</span></p>
                     <p className="text-xl lg:text-2xl text-shadow-lg text-gray-300">{overview}</p>
                     <p className="text-shadow-sm"><span className="text-gray-400">Release date:</span> {release_date}</p>
                     <p className="text-shadow-sm"><span className="text-gray-400">Status:</span> {status}</p>
                     <p className="text-shadow-sm"><span className="text-gray-400">Original language:</span> {original_language}</p>
-                    <button className="inline-flex items-center bg-rose-600 py-2 px-4 rounded-md self-start" onClick={()=>setPlay(!play)}>
-                        {play? <FaPause className="mr-2"/> : <FaPlay className="mr-2"/>}Play</button>
+                    <div className="flex space-x-4">
+                        <button className="inline-flex items-center bg-rose-600 py-2 px-4 rounded-md self-start" onClick={()=>setPlay(!play)}>
+                            {play? <FaPause className="mr-2"/> : <FaPlay className="mr-2"/>}
+                            Play
+                        </button>
+                        <Link href={'/'}><button className="inline-flex items-center bg-rose-600 py-2 px-4 rounded-md self-start"><ImHome className="w-6 h-6 animate-pulse"/></button></Link>
+                    </div>
                 </div> 
             </div>
             <div className="group relative flex items-center">
@@ -101,7 +101,7 @@ const Movie = ({movie,video,credits}) => {
                 />
         </div>
         </div>
-        <div className="w-full h-screen">
+        <div className="w-full h-screen p-2">
             <ReactPlayer 
             url={`https://www.youtube.com/watch?v=${video.results[0]?.key}`}
             width='100%'
