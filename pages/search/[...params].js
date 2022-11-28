@@ -25,18 +25,23 @@ const SearchPage = ({search,page,params}) => {
   return (
     <Layout trending={movie}>
     <div className="container mx-auto">
-    <div className="grid grid-cols-1 min-[385px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+    <div className="grid grid-cols-2 min-[540px]:grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2">
         {movie.map((mov)=>{
             return(
                 <div key={mov.id} className="w-full flex">
-                    <div className="relative w-60 h-80">
-                    <Image src={mov.poster_path?`${img_500}${mov.poster_path || mov.backdrop_path }`: unavailable_img} alt={mov.original_title || mov.title || 'poster'} fill className='object-cover'/>
-                    </div>
+                    <Link href={`/movie/${mov.id}`}>
+                        <div className="flex flex-col mb-1 w-40 lg:w-48 xl:w-48 ">
+                        <div className="relative w-40 h-52 lg:w-48 lg:h-72 xl:w-48 xl:h-72">
+                            <Image src={mov.poster_path?`${img_500}${mov.poster_path || mov.backdrop_path }`: unavailable_img} alt={mov.original_title || mov.title || 'poster'} fill className='object-cover'/> 
+                        </div>
+                            <h3 className="text-white text-xl">{mov.original_title || mov.title}</h3>
+                        </div>
+                    </Link>
                 </div>
             )
         })}
     </div>
-    <div className="text-white flex space-x-3 items-center py-10">
+    <div className="text-white flex space-x-3 items-center py-5 justify-center">
         <Link className="text-white" href={`/search/${params}/?page=${page - 1}`}>
             <button className={currentPage <= 1?'hidden':'py-3 px-4 rounded-md bg-rose-600 m-2'}>
                 <MdArrowBackIos/>
