@@ -2,15 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
 
 @layer base {
   body {
-    @apply bg-black scrollbar scrollbar-thumb-slate-900 scrollbar-track-gray-600
+    @apply bg-black scrollbar scrollbar-thumb-slate-900 scrollbar-track-gray-600;
   }
   header {
-    @apply fixed top-0 z-50 justify-between left-0 w-full px-4 h-12 md:h-16 flex items-center text-white
+    @apply fixed top-0 z-50 justify-between left-0 w-full px-4 h-12 md:h-16 flex items-center text-white;
   }
 }
-
-
