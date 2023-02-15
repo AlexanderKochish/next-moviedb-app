@@ -6,12 +6,16 @@ const MovieCast = ({ cast }) => {
   return (
     <div className="flex flex-col min-h-60 items-center bg-slate-900 rounded-md p-1">
       <div className="relative top-0 left-0 h-40 w-32">
-        <Image
-          src={`${img_300}${cast.profile_path}`}
-          alt="profile_path"
-          fill
-          className="object-cover"
-        />
+        {!cast?.profile_path ? (
+          <EmptyImage />
+        ) : (
+          <Image
+            src={`${img_300}${cast?.profile_path}`}
+            alt="profile_path"
+            fill
+            className="object-cover"
+          />
+        )}
       </div>
       <div>
         <h2>{cast?.original_name || cast?.name}</h2>

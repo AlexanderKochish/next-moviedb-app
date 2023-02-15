@@ -10,6 +10,7 @@ const Modal = ({ setOpen, open, movie }) => {
   const [play, setPlay] = useState(false);
   const [info, setInfo] = useState(false);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     async function getVideoTrailer() {
         try{
@@ -61,21 +62,25 @@ const View = ({
   movie,
 }) => {
   return (
-    <div className="flex flex-col z-40 w-3/4 h-2/3 lg:h-3/4 bg-black pb-10">
+    <div className="flex relative flex-col z-40 w-3/4 h-3/4 lg:h-3/4 bg-black pb-10">
       <MdOutlineClose
         onClick={() => setOpen(!open)}
-        className="cursor-pointer m-2 hover:animate-pulse w-10 h-10 text-white flex self-end"
+        className="cursor-pointer m-1 hover:animate-pulse w-10 h-10 text-white flex self-end"
       />
-      <div className="w-full h-full">
+      <div className="w-full h-full flex flex-col justify-center items-center">
+        {!movVideo? 
+        <h2 className="text-white text-3xl font-semibold">Not Found Video</h2> : 
         <ReactPlayer
           url={`https://www.youtube.com/watch?v=${movVideo}`}
           width="100%"
           height="100%"
           controls={true}
+          loop={true}
           playing={play}
-        />
+        />}
       </div>
-      <div className="flex space-x-4 m-4">
+      <div className="flex absolute flex-col left-0 top-[480px] bottom-14">
+        <div className="ml-5 flex space-x-3">
         <button
           onClick={() => setPlay(!play)}
           className="bg-rose-700 text-white py-1 px-3 md:py-2 md:px-4 rounded-xl inline-flex items-center"
@@ -87,13 +92,15 @@ const View = ({
           onClick={() => setInfo(!info)}
           className="bg-gray-500 py-1 px-4 rounded-xl inline-flex items-center"
         >
-          <MdInfoOutline className="m-1" />
+          <MdInfoOutline className="m-1 text-white" />
         </button>
-      </div>
-      <div className={info ? "text-white flex flex-col px-4" : "hidden"}>
+        </div>
+        <div className={info ? "text-white flex mt-7 min-h-max w-full bg-black flex-col px-4" : "hidden"}>
         <h2 className="text-2xl">{movie.original_title || movie.title}</h2>
         <p className="text-md">{movie.overview}</p>
       </div>
+      </div>
+      
     </div>
   );
 };

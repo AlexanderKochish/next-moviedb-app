@@ -138,7 +138,7 @@ const Movie = ({ movie, video, credits }) => {
           />
           <div
             ref={ref}
-            className="flex -mt-10 mb-10 overflow-hidden space-x-2 md:space-x-4"
+            className="flex -mt-10 mb-10 overflow-y-hidden overflow-x-scroll scrollbar-hide space-x-2 md:space-x-4"
           >
             {cast.map((cast) => (
               <MovieCast key={cast.id} cast={cast} />
@@ -151,13 +151,14 @@ const Movie = ({ movie, video, credits }) => {
         </div>
       </div>
       <div className="w-full h-screen p-2">
+        {!video.results[0]?.key? <h2 className="text-white text-3xl font-semibold">Not Found Video</h2> :
         <ReactPlayer
           url={`https://www.youtube.com/watch?v=${video.results[0]?.key}`}
           width="100%"
           height="100%"
           controls={true}
           playing={play}
-        />
+        />}
       </div>
     </div>
   );

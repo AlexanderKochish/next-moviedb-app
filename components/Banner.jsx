@@ -7,6 +7,9 @@ import { useState } from "react";
 const Banner = ({ movie, setOpen, open }) => {
   const [info, setInfo] = useState(true);
 
+  let altReleaseDate = !movie?.release_date? 'no release date information available': movie?.release_date;
+  let altOriginalLanguage = !movie?.original_language? 'no information about the original language': movie?.original_language;
+  let altStatus = !movie?.status? 'no information about status':movie?.status;
   return (
     <div className="w-full min-h-screen flex flex-col justify-center ">
       <div className="w-full h-screen absolute top-0 left-0 -z-10 ">
@@ -27,15 +30,15 @@ const Banner = ({ movie, setOpen, open }) => {
         </p>
         <div className={!info ? "flex flex-col" : "hidden"}>
           <p className="text-shadow-sm">
-            <span className="text-gray-400">Release date:</span>{" "}
-            {movie?.release_date}
+            <span className="text-gray-400">Release date:</span>{' '}
+            {altReleaseDate}
           </p>
           <p className="text-shadow-sm">
-            <span className="text-gray-400">Status:</span> {movie?.status}
+            <span className="text-gray-400">Status:</span>{' '}{altStatus}
           </p>
           <p className="text-shadow-sm">
-            <span className="text-gray-400">Original language:</span>{" "}
-            {movie?.original_language}
+            <span className="text-gray-400">Original language:</span>{' '}
+            {altOriginalLanguage}
           </p>
         </div>
         <div className="space-x-2 space-y-2">
